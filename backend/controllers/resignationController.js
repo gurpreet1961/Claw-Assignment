@@ -1,7 +1,7 @@
-const Resignation = require("../models/Resignation");
-const checkHoliday = require("../config/calendarific");
+import Resignation from "../models/Resignation.js";
+import checkHoliday from "../config/calendarific.js";
 
-exports.submitResignation = async (req, res) => {
+export const submitResignation = async (req, res) => {
     const { lwd } = req.body;
     if (await checkHoliday(lwd, "US")) return res.status(400).json({ message: "LWD cannot be a holiday" });
 
